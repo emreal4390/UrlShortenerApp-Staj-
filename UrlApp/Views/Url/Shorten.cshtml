@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Shortened URL";
+}
+
+<div class="text-center">
+    <h2>Your Shortened URL:</h2>
+
+    <!-- Sonuç kısmı burada dinamik olarak gösterilecek -->
+    <div id="result"></div>
+
+    <form id="shortenForm">
+        <label for="originalUrl">Enter URL to shorten:</label>
+        <input type="text" id="originalUrl" name="originalUrl" required />
+        <button type="submit">Shorten</button>
+    </form>
+
+    <a href="/Home/Index">Go Back to Home</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Form submit işlemi
+    $("#shortenForm").submit(function (event) {
+        event.preventDefault(); // Sayfanın yenilenmesini engeller
+
+        var originalUrl = $("#originalUrl").val(); // Kullanıcıdan gelen URL
+
+               $.ajax({
+        url: '/Url/Shorten',
+        type: 'POST',
+        contentType: 'application/x-www-form-urlencoded',  // Form verisi formatında gönder
+        data: { originalUrl: originalUrl },  // JSON yerine form verisi
+        success: function (response) {
+            if (response && response.shortUrl) {
+                $("#result").html('<p><strong>Your shortened URL is:</strong></p><p><a href="' + response.shortUrl + '" target="_blank">' + response.shortUrl + '</a></p>');
+            }
+        },
+        error: function (xhr, status, error) {
+            $("#result").html('<p>Error: ' + error + '</p>'); // Hata mesajı
+        }
+    });
+    });
+</script>

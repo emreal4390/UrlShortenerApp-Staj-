@@ -1,0 +1,36 @@
+﻿@model UrlApp.Models.Url  
+
+<h2>URL Kısaltıcı</h2>
+
+<form id="urlForm" method="post">
+    <div>
+        <label for="originalUrl">URL Girin:</label>
+        <input type="text" id="originalUrl" name="originalUrl" placeholder="Kısaltmak istediğiniz URL'yi girin" required>
+    </div>
+    <button type="submit">Kısalt</button>
+</form>
+
+<div id="shortUrlResult"></div>
+
+<script>
+    $("form").submit(function (event) {
+        event.preventDefault(); // Sayfanın yenilenmesini engeller
+
+        var originalUrl = $("input[name='originalUrl']").val(); // Formdan gelen URL
+
+        $.ajax({
+            url: '/Url/Shorten',
+            type: 'POST',
+            contentType: 'application/json', // JSON formatında veri gönder
+            data: JSON.stringify({ originalUrl: originalUrl }), // URL'yi JSON formatına çevir
+            success: function (response) {
+                // Kısaltılan URL'yi ekrana yazdır
+                $("#result").html('<p>Shortened URL: <a href="' + response.shortUrl + '">' + response.shortUrl + '</a></p>');
+            },
+            error: function (xhr, status, error) {
+                console.log("Error: " + error); // Hata mesajını logla
+            }
+        });
+    });
+</script>
+

@@ -1,0 +1,105 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #4da3ff 0%, #87cefa 100%);
+    min-height: 100vh;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: none;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.table {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+}
+
+.table-light {
+    background-color: rgba(248, 249, 250, 0.9);
+}
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+}
+
+.footer {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Input ve buton stilleri */
+.form-control-lg {
+    border: 2px solid #e0e5ec;
+    transition: all 0.2s;
+}
+
+.form-control-lg:focus {
+    border-color: #6900f2;
+    box-shadow: 0 0 0 0.2rem rgba(105, 0, 242, 0.25);
+}
+
+.btn-primary {
+    background-color: #6900f2;
+    border-color: #6900f2;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #5600c9;
+    border-color: #5600c9;
+    transform: translateY(-2px);
+}
+
+/* Badge stilleri */
+.badge.bg-primary {
+    background-color: #6900f2 !important;
+}
+
+.badge.bg-success {
+    background-color: #00ba94 !important;
+}
+
+/* Animasyonlu geçişler */
+.fade {
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Mobil uyumluluk için ek stiller */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .card {
+        margin: 0;
+    }
+}

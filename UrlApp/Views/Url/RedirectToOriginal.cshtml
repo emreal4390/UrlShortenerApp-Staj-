@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Redirecting...";
+}
+
+<div class="text-center">
+    <h2>Redirecting...</h2>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Error:</strong> @ViewBag.ErrorMessage
+        </div>
+    }
+    else
+    {
+        <p>Redirecting you to the original URL...</p>
+    }
+
+    <a href="/Home/Index">Back to Home</a>
+</div>
